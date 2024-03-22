@@ -60,7 +60,7 @@
     "dev": "npm run open-browser && next dev",
     "open-browser": "start http://localhost:3000",
     "prepare": "husky",
-    "lint": "eslint --format stylish --max-warnings 0 .",
+    "lint": "eslint --format stylish --max-warnings 0 --cache .",
     "lint:fix": "pnpm lint --fix",
     "start": "next start"
   },
