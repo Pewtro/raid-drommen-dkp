@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { CharacterList } from '~/components/character-list';
 import { ModeToggle } from '~/components/theme-toggle';
 import { Button } from '~/components/ui/button';
 import { api } from '~/utils/api';
@@ -25,10 +26,13 @@ export default function Home() {
           )}
         </Button>
       </nav>
-      <main className="flex min-h-screen flex-col items-center">
+      <main className="flex min-h-screen flex-col">
         <p className="text-5xl font-bold">Raid Drømmen DKP</p>
         {data && <p className="text-3xl font-bold">Velkommen {data.user.name} </p>}
         {hello.data ? hello.data.greeting : 'Loading tRPC query...'}
+        <div className="grid grid-cols-3 gap-4">
+          <CharacterList />
+        </div>
       </main>
     </>
   );

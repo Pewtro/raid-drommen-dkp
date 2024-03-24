@@ -1,8 +1,7 @@
 import { sql } from 'drizzle-orm';
-import { text, integer, sqliteTableCreator, index, primaryKey } from 'drizzle-orm/sqlite-core';
+import { text, integer, index, primaryKey } from 'drizzle-orm/sqlite-core';
 import type { AdapterAccount } from 'next-auth/adapters';
-
-export const createTable = sqliteTableCreator((name) => `raid-drommen-dkp_${name}`);
+import { createTable } from './helpers';
 
 export const users = createTable('user', {
   id: text('id', { length: 255 }).notNull().primaryKey(),
@@ -12,6 +11,7 @@ export const users = createTable('user', {
     mode: 'timestamp',
   }).default(sql`CURRENT_TIMESTAMP`),
   image: text('image', { length: 255 }),
+  killPoints: integer('killPoints', { mode: 'number' }).default(0),
 });
 
 export const sessions = createTable(
